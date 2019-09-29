@@ -2,4 +2,4 @@
 
 ## WEEK 1
 
-[Assignment1: RMarkdown Homework](RMarkdown.html)
+[Assignment 1: RMarkdown Homework](RMarkdown.html)
