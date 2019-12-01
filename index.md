@@ -6,4 +6,4 @@
 
 [Assignment 2: BKM](bkm2.html)
 
-[Assignment 3: Tennis Data](tennis.html)
+[Assignment 3: Tennis Data](tenis.html)
