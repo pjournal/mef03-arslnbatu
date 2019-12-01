@@ -1,7 +1,9 @@
 ## Welcome to My Progress Journal
 
-## WEEK 1
+## My Assignments
 
 [Assignment 1: RMarkdown Homework](RMarkdown.html)
 
-[Asignment 2: BKM](bkm2.html)
+[Assignment 2: BKM](bkm2.html)
+
+[Assignment 3: Tennis Data](tennis.html)
