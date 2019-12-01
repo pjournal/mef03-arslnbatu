@@ -1,0 +1,38 @@
+---
+title: "tennis"
+output: html_document
+---
+#Load library
+```{r}
+library(tidyverse)
+
+```
+#load data
+```{r}
+
+load("atp_tennis_data_2017.RData")
+```
+#analysis
+```{r}
+champ_flags_df <- tourney_df %>% left_join(.,player_df,by=c("singles_winner_player_id"= "player_id")) %>% count(flag_code,sort=TRUE)
+
+```
+```{r}
+nonchamp_players <- 
+player_df %>% select(player_id,flag_code) %>% anti_join(.,champ_flags_df)
+```
+```{r}
+nonchamp_players %>% left_join(.,score_df,by=c("player_id"="winner_player_id")) %>% group_by(flag_code) %>% summarise(total_won=sum(winner_games_won,na.rm=TRUE)) %>% arrange(desc(total_won))
+```
+#analysis of what are the most surface using in the country
+```{r}
+ss <- left_join(player_df, tourney_df, by = c('player_id'='singles_winner_player_id'))
+
+ss %>% group_by(flag_code,tourney_surface) %>% filter(tourney_surface != "NA") %>% count(tourney_surface) %>% arrange(desc(n))
+```
+#analysis of which player take most rate according to match duration and total points
+```{r}
+abc <- inner_join(stats_df, score_df,by=c("match_id"))
+abc %>% select(winner_player_id.x, match_duration, winner_total_points_total,loser_total_points_total) %>% filter(match_duration > 250)%>% mutate(rate=match_duration/(winner_total_points_total+loser_total_points_total))%>% arrange(desc(rate))
+```
+
